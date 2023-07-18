@@ -1,0 +1,31 @@
+<div>
+  <button nz-button nzType="primary" (click)="showModal()">
+    <span>Thêm mới</span>
+  </button>
+</div>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Quản lý"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk(formData)"
+  [nzOkLoading]="isOkLoading"
+  [nzWidth]="'1200px'"
+  [nzBodyStyle]="{ height: '450px', 'overflow-y': 'scroll' }"
+  [nzOkText]="'Tiếp tục'"
+  [nzCancelText]="'Hủy bỏ'"
+  [nzFooter]="modalFooter"
+>
+  <nz-tabset *nzModalContent [nzSelectedIndex]="activeTab">
+    <nz-tab nzTitle="Thông tin">
+      <app-thongtin (formDataEvent)="handleOk($event)"></app-thongtin>
+    </nz-tab>
+    <nz-tab nzTitle="Câu hỏi" [nzDisabled]="!istabDisabled">
+      <app-cauhoi></app-cauhoi>
+    </nz-tab>
+  </nz-tabset>
+
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">Hủy bỏ</button>
+  </ng-template>
+</nz-modal>

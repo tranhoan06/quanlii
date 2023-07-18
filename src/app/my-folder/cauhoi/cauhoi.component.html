@@ -1,0 +1,84 @@
+<nav class="navbar bg-body-tertiary w-100">
+  <div class="container-fluid">
+    <a class="navbar-brand">Danh sách</a>
+    <p style="margin: 0">0 bản ghi</p>
+    <form class="d-flex w-50" role="search">
+      <input
+        class="form-control me-2 frmInput w-100"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+    </form>
+    <button nz-button [nzType]="'primary'" (click)="showModal()">
+      <span>Thêm mới</span>
+    </button>
+    <nz-modal
+      [(nzVisible)]="isVisible"
+      nzTitle="Thêm mới"
+      (nzOnCancel)="handleCancel()"
+      [nzWidth]="'900px'"
+      [nzBodyStyle]="{ height: '200px', 'overflow-y': 'scroll' }"
+      [nzFooter]="modalFooter"
+    >
+      <ng-container *nzModalContent>
+        <nz-tabset [nzSelectedIndex]="activeTab">
+          <nz-tab nzTitle="Thông tin">
+            <app-info></app-info>
+          </nz-tab>
+
+          <nz-tab nzTitle="Câu trả lời" [nzDisabled]="!istabDisabled"
+            ><app-answer [newData]="newData"></app-answer
+          ></nz-tab>
+        </nz-tabset>
+      </ng-container>
+
+      <ng-template #modalFooter>
+        <button class="" nz-button (click)="handleCancel()">Đóng</button>
+        <button nz-button (click)="resetAllvalue()" *ngIf="activeTab !== 1">
+          Làm mới
+        </button>
+        <button class="custom-save-btn" nz-button (click)="handleOk()">
+          Lưu và tiếp tục
+        </button>
+      </ng-template>
+    </nz-modal>
+  </div>
+  <!-- <div *ngIf="value">Value: {{ value }}</div> -->
+
+  <div class="w-100 mt-5 pb-5 bgTest">
+    <div class="d-flex w-100" style="justify-content: space-between">
+      <label
+        nz-checkbox
+        [(ngModel)]="checked"
+        class=""
+        style="width: 10%"
+      ></label>
+      <span class="w-25">Nội dung</span>
+      <span class="w-25">Loại</span>
+      <span class="w-25">Bắt buộc</span>
+      <span class="w-25">Trạng thái</span>
+      <span class="w-25">Thao tác</span>
+    </div>
+    <div class="d-flex w-100 justify-content-around mt-3 bgTest" style="">
+      <label
+        *ngIf="value"
+        nz-checkbox
+        [(ngModel)]="checked"
+        class=""
+        style="width: 10%"
+      ></label>
+      <span *ngIf="value" class="w-25">{{ value }}</span>
+      <span *ngIf="kind" class="w-25">{{ kind }}</span>
+      <span *ngIf="compulsory" class="w-25 d-flex justify-content-center">
+        <p class="txtSpan">{{ compulsory }}</p></span
+      >
+      <span *ngIf="value" class="w-25 d-flex justify-content-center"
+        ><p class="txtSpan">Hoạt động</p></span
+      >
+      <span *ngIf="value" class="w-25"
+        ><span nz-icon class="editic" nzType="edit" nzTheme="fill" (click)="showModal()"></span
+      ></span>
+    </div>
+  </div>
+</nav>

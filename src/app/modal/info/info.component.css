@@ -1,0 +1,28 @@
+.test {
+  width: 25%;
+  margin: 10px;
+}
+
+.container-drop .btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-drop .btn p {
+  text-align: center;
+  margin: 0 14px;
+}
+
+.form-floating {
+  height: 32px !important;
+}
+
+.form-floating textarea {
+  border: none;
+  height: 100%;
+  resize: vertical;
+  width: 100%;
+}
+

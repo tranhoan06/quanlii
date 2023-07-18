@@ -1,0 +1,22 @@
+
+.bgTest span {
+  text-align: center;
+}
+
+.bgTest label {
+  margin-left: 100px;
+}
+
+.txtSpan {
+  margin: 0;
+  width: 45%;
+  background-color: #0abb87;
+  color: white;
+  border-radius: 10px;
+}
+
+.editic {
+  color: blue;
+  cursor: pointer;
+  font-size: 18px;
+}

@@ -1,0 +1,13 @@
+.custom-modal .ant-modal-content {
+  width: 1000px;
+  height: 500px;
+}
+
+.custom-modal .ant-modal-body {
+  overflow-y: auto;
+}
+
+button {
+  margin: 20px
+}
+

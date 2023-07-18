@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="body">
+    <div class="test">
+      <span>Tiêu đề</span>
+      <input
+        nz-input
+        placeholder="Tiêu đề"
+        [(ngModel)]="value"
+        (ngModelChange)="onInputChange()"
+      />
+    </div>
+
+    <div class="container-drop test">
+      <span>Loại khảo sát</span>
+      <button class="btn" nz-button nz-dropdown [nzDropdownMenu]="menu4">
+        <p>{{ selectedOption }}</p>
+        <span class="icon1" nz-icon nzType="down"></span>
+      </button>
+      <nz-dropdown-menu
+        #menu4="nzDropdownMenu"
+        (ngModelChange)="onInputChange()"
+      >
+        <ul nz-menu>
+          <input nz-input placeholder="Từ khóa ..." />
+          <li nz-menu-item (click)="selectOption('Bắt buộc')">Bắt buộc</li>
+          <li nz-menu-item (click)="selectOption('Không bắt buộc')">
+            Không bắt buộc
+          </li>
+        </ul>
+      </nz-dropdown-menu>
+    </div>
+
+    <div class="container-drop test">
+      <span>Ưu tiên</span>
+      <button class="btn" nz-button nz-dropdown [nzDropdownMenu]="menu3">
+        <p>{{ priorities }}</p>
+        <span class="icon1" nz-icon nzType="down"></span>
+      </button>
+      <nz-dropdown-menu #menu3="nzDropdownMenu">
+        <ul nz-menu>
+          <input
+            nz-input
+            placeholder="Từ khóa ..."
+            (ngModelChange)="onInputChange()"
+          />
+          <li nz-menu-item (click)="selectPrority('Bắt buộc')">Bắt buộc</li>
+          <li nz-menu-item (click)="selectPrority('Không bắt buộc')">
+            Không bắt buộc
+          </li>
+        </ul>
+      </nz-dropdown-menu>
+    </div>
+
+    <!-- Date -->
+    <div class="test" style="margin-top: 20px">
+      <span>Từ ngày - Đến ngày</span>
+      <div style="width: 100%">
+        <nz-range-picker
+          style="width: 100%"
+          [nzDateRender]="tplRender"
+          [(ngModel)]="selectedDateRange"
+          (ngModelChange)="onInputChange()"
+        ></nz-range-picker>
+
+        <ng-template #tplRender let-current>
+          <div
+            class="ant-picker-cell-inner"
+            [class.border]="current.getDate() === 1"
+          >
+            {{ current.getDate() }}
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Checkbox -->
+    <div class="" style="width: 10%">
+      <span>Trạng thái:</span>
+      <label
+        style="width: 100%"
+        nz-checkbox
+        [(ngModel)]="checked"
+        (ngModelChange)="onInputChange()"
+        >Hiển thị/Ẩn</label
+      >
+    </div>
+  </div>
+
+  <!-- Mục tiêu -->
+  <div class="form-floating h-100">
+    <textarea
+      class="form-control h-100"
+      placeholder="Leave a comment here"
+      id="floatingTextarea"
+      [(ngModel)]="goalString"
+      (ngModelChange)="onInputChange()"
+    ></textarea>
+    <label for="floatingTextarea">Mục tiêu</label>
+  </div>
+
+  <!-- Lưu ý -->
+  <div class="form-floating mt-4 pb-3">
+    <textarea
+      class="form-control h-100"
+      placeholder="Leave a comment here"
+      id="floatingTextarea"
+      [(ngModel)]="noteString"
+      (ngModelChange)="onInputChange()"
+    ></textarea>
+    <label for="floatingTextarea">Lưu ý</label>
+  </div>
+
+  <div class="button">
+    <button nz-button nzType="primary" *ngIf="isDirty" (click)="handleSave()" routerLink="/cauhoi">
+      Lưu và tiếp tục
+    </button>
+
+    <button nz-button nzType="primary" *ngIf="isDirty" (click)="resetValues()">
+      Làm mới
+    </button>
+  </div>
+</div>

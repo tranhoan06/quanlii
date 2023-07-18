@@ -1,0 +1,75 @@
+<div class="d-flex w-100">
+  <div class="form-floating test">
+    <textarea
+      class="form-control"
+      placeholder="Leave a comment here"
+      id="floatingTextarea"
+      [(ngModel)]="value"
+      (ngModelChange)="onInputChange()"
+    ></textarea>
+    <label for="floatingTextarea" style="padding: 16px 12px 18px"
+      >Nội dung</label
+    >
+  </div>
+
+  <!-- Loại -->
+  <div class="container-drop test">
+    <span>Loại</span>
+    <button class="btn" nz-button nz-dropdown [nzDropdownMenu]="menu3">
+      <p>{{ kind }}</p>
+      <span class="icon1" nz-icon nzType="down"></span>
+    </button>
+    <nz-dropdown-menu #menu3="nzDropdownMenu">
+      <ul nz-menu>
+        <input
+          nz-input
+          placeholder="Từ khóa ..."
+          (ngModelChange)="onInputChange()"
+        />
+        <li nz-menu-item (click)="selectKind('Chọn 1')">Chọn 1</li>
+        <li nz-menu-item (click)="selectKind('Chọn nhiều')">Chọn nhiều</li>
+        <li nz-menu-item (click)="selectKind('Nội dung')">Nội dung</li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+
+  <!-- Có -->
+  <div class="container-drop test">
+    <span>Bắt buộc</span>
+    <button class="btn" nz-button nz-dropdown [nzDropdownMenu]="menu4">
+      <p>{{ compulsory }}</p>
+      <span class="icon1" nz-icon nzType="down"></span>
+    </button>
+    <nz-dropdown-menu #menu4="nzDropdownMenu">
+      <ul nz-menu>
+        <input
+          nz-input
+          placeholder="Từ khóa ..."
+          (ngModelChange)="onInputChange()"
+        />
+        <li nz-menu-item (click)="selectCompulsory('Có')">Có</li>
+        <li nz-menu-item (click)="selectCompulsory('Không')">Không</li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+
+  <!-- Checkbox -->
+  <div
+    class=""
+    style="
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    "
+  >
+    <span>Trạng thái:</span>
+    <label
+      style="width: 100%"
+      nz-checkbox
+      [(ngModel)]="checked"
+      (ngModelChange)="onInputChange()"
+      >Hiển thị/Ẩn</label
+    >
+  </div>
+</div>

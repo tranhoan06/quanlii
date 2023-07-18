@@ -1,0 +1,24 @@
+<div class="w-100 mt-5 pb-5 bgTest">
+  <div class="d-flex w-100" style="justify-content: space-between">
+    <div class="w-25 d-flex justify-content-around">
+      <label nz-checkbox [(ngModel)]="checked1"></label>
+      <span>Nội dung</span>
+    </div>
+    <span class="w-25">Trạng thái</span>
+    <span class="w-25">Thao tác</span>
+  </div>
+  <div class="d-flex w-100 justify-content-between mt-3 bgTest" style="">
+    <div class="w-25 d-flex justify-content-around">
+      <label nz-checkbox [(ngModel)]="checked"></label>
+      <span *ngIf="newData && newData.value !== undefined">
+        {{ newData.value }}
+      </span>
+    </div>
+    <span class="w-25 d-flex justify-content-center"
+      ><p class="txtSpan">Hoạt động</p></span
+    >
+    <span class="w-25"
+      ><span nz-icon class="editic" nzType="edit" nzTheme="fill"></span
+    ></span>
+  </div>
+</div>
